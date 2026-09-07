@@ -1,0 +1,21 @@
+{
+  "landslides": {
+    "source": "GSI Bhusanket / ISRO NRSC Landslide Atlas",
+    "url": "https://bhusanket.gsi.gov.in/",
+    "downloaded_on": "YYYY-MM-DD",
+    "license_or_terms": "Record the applicable terms here",
+    "date_range": "YYYY-YYYY"
+  },
+  "terrain": {
+    "source": "Validated DEM source",
+    "url": "https://example.org",
+    "downloaded_on": "YYYY-MM-DD",
+    "license_or_terms": "Record the applicable terms here"
+  },
+  "rainfall": {
+    "source": "IMD / other validated source",
+    "url": "https://mausam.imd.gov.in/",
+    "downloaded_on": "YYYY-MM-DD",
+    "license_or_terms": "Record the applicable terms here"
+  }
+}

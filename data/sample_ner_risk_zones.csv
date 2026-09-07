@@ -1,0 +1,11 @@
+id,location,state,lat,lon,risk_score,risk_level,vulnerable_villages,road_risk,confidence
+NER-001,Aizawl,Mizoram,23.7271,92.7176,88,CRITICAL,14,92,86
+NER-002,Kohima,Nagaland,25.6751,94.1086,81,CRITICAL,11,84,82
+NER-003,Imphal,Manipur,24.8170,93.9368,73,HIGH,9,76,79
+NER-004,Shillong,Meghalaya,25.5788,91.8933,69,HIGH,12,71,81
+NER-005,Agartala,Tripura,23.8315,91.2868,48,MODERATE,5,44,77
+NER-006,Gangtok,Sikkim,27.3389,88.6065,77,HIGH,10,83,84
+NER-007,Itanagar,Arunachal Pradesh,27.0844,93.6053,86,CRITICAL,16,90,87
+NER-008,Silchar,Assam,24.8333,92.7789,62,HIGH,7,65,74
+NER-009,Tura,Meghalaya,25.5140,90.2026,57,MODERATE,6,59,78
+NER-010,Dimapur,Nagaland,25.9040,93.7266,41,MODERATE,3,47,73

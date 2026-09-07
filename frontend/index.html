@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RescueAI — NER Landslide Risk Monitor</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div>
+      <div class="brand">RESCUEAI</div>
+      <div class="subtitle">AI-Based Early Warning & Landslide Risk Monitoring — NER</div>
+    </div>
+    <div class="status" id="conn"><span class="dot"></span> Connecting…</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Know where risk is rising.</h1>
+        <p>RescueAI turns terrain, rainfall, historical and geospatial data into explainable risk intelligence for early preventive action.</p>
+      </div>
+    </section>
+
+    <section class="cards" id="summaryCards"></section>
+
+    <section class="grid">
+      <div class="panel map-panel">
+        <div class="panel-head">
+          <div>
+            <h2>NER Risk Map</h2>
+            <p>Prototype risk zones</p>
+          </div>
+          <select id="filter">
+            <option value="0">All zones</option>
+            <option value="60">High+ only</option>
+            <option value="80">Critical only</option>
+          </select>
+        </div>
+        <div id="map"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Top Risk Areas</h2>
+            <p>Prioritise review and warning</p>
+          </div>
+        </div>
+        <div id="riskList" class="risk-list"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>AI Risk Calculator</h2>
+          <p>Demo only — thresholds must be calibrated on validated NER data.</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>Rainfall 24h (mm)<input id="r24" type="number" value="180"></label>
+        <label>Rainfall 7d (mm)<input id="r7" type="number" value="580"></label>
+        <label>Slope (°)<input id="slope" type="number" value="32"></label>
+        <label>Elevation (m)<input id="elev" type="number" value="1400"></label>
+        <label>Geology Risk (0–1)<input id="geo" type="number" min="0" max="1" step="0.01" value="0.75"></label>
+        <label>Land-cover Change (0–1)<input id="land" type="number" min="0" max="1" step="0.01" value="0.55"></label>
+        <label>Historical Risk (0–1)<input id="hist" type="number" min="0" max="1" step="0.01" value="0.8"></label>
+        <button id="calc">Baseline Risk</button><button id="mlcalc" onclick="mlCalculate()">AI Model Risk</button>
+      </div>
+      <div id="result" class="result hidden"></div>
+    </section>
+  </main>
+
+  <footer>Quantum Minds · RescueAI · Software Prototype · <span id="apiHost"></span></footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const hostEl = document.getElementById("apiHost");
+  if (hostEl) hostEl.textContent = "API: " + API;
+  fetch(API + "/api/health")
+    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+    .then(() => {
+      document.getElementById("conn").innerHTML = '<span class="dot"></span> Backend Connected';
+    })
+    .catch(() => {
+      document.getElementById("conn").innerHTML = '<span class="dot"></span> Backend Unreachable';
+    });
+});
+</script>
+</body>
+</html>
